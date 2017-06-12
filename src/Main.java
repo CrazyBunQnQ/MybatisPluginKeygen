@@ -9,23 +9,20 @@ import java.security.NoSuchAlgorithmException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
-/**
- * Created by CrazyBunQnQ on 2017/6/12.
- */
 public class Main {
     public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         KeyPairGenerator keygen = KeyPairGenerator.getInstance("RSA");
         keygen.initialize(512);
         KeyPair kp = keygen.generateKeyPair();
-        RSAPrivateKey privateKey = (RSAPrivateKey)kp.getPrivate();
-        RSAPublicKey publicKey = (RSAPublicKey)kp.getPublic();
+        RSAPrivateKey privateKey = (RSAPrivateKey) kp.getPrivate();
+        RSAPublicKey publicKey = (RSAPublicKey) kp.getPublic();
         System.out.println("KEY:\n" + bytesToHexString(publicKey.getEncoded()) + "\n");
         Cipher cipher = Cipher.getInstance("RSA");
-        cipher.init(Cipher.ENCRYPT_MODE,privateKey);
+        cipher.init(Cipher.ENCRYPT_MODE, privateKey);
         System.out.println("RESULT:\n" + bytesToHexString(cipher.doFinal("ilanyu".getBytes())) + "\n");
     }
 
-    private static String bytesToHexString(byte[] src){
+    private static String bytesToHexString(byte[] src) {
         StringBuilder stringBuilder = new StringBuilder("");
         if (src == null || src.length <= 0) {
             return null;
