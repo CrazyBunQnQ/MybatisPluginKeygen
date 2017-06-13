@@ -1,4 +1,5 @@
 # 注册机使用方法
+
 ## 生成密钥和公钥
 1. 运行 Main 方法，会在控制台输出 Key 和 Result，记录下 Key 和 Result 的值
 2. 安装官方版 Mybatis Plugin 插件,然后关闭IDEA (安装插件方法自行谷歌)
@@ -19,3 +20,9 @@ open mybatis.xml
 open mybatis.xml -a Sublime\ Text
 ```
 >空格需要转义
+
+## 修复 bug
+解决重启 IDEA 后配置文件中的 Key 和 Result 字段值被清空的问题：
+1. 关闭 IDEA
+2. 将这 MybatisSetting.class 文件拷贝到 Mybatis Pugiln 插件安装目录 `/lib/idea-multimarkdown.jar` 包中的 `com.seventh7.mybatis.setting` 目录下，覆盖原有的 MybatisSetting.class 文件。
+3. 启动 IDEA
